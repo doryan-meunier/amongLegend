@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Among Legend - Accueil</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('image/imagefonddusitelol.webp'); /* Remplacez 'votre-image.jpg' par le chemin de votre image de fond */
+            background-size: cover; /* Ajuste la taille de l'image pour couvrir tout le corps */
+            background-repeat: no-repeat; /* Évite la répétition de l'image */
+            background-position: center center; /* Centre l'image horizontalement et verticalement */
+            color: #fff; /* Couleur du texte (blanc) pour une meilleure lisibilité */
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            color:black;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            transform: scale(1.1); /* Agrandit le bouton au survol */
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
+
+<script>
+  // Code client qui utilise socket.io
+  const socket = io('http://localhost:3000');
+  transports: ['websocket'],
+
+  function choisirTypePartie() {
+    var choix = prompt("Voulez-vous créer une partie 'draft' ou 'personnalisée'?");
+    if (choix) {
+      choix = choix.toLowerCase();
+      if (choix === 'draft' || choix === 'personnalisée') {
+        var nombreJoueurs = (choix === 'draft') ? 5 : 10;
+        socket.emit('create-lobby', { type: choix, maxPlayers: nombreJoueurs });
+      } else {
+        alert("Veuillez entrer 'draft' ou 'personnalisée'.");
+      }
+    }
+  }
+
+  socket.on('lobby-created', ({ lobbyLink }) => {
+    // Ajouter une condition pour la redirection
+    if (lobbyLink) {
+      alert(`Lobby créé avec succès. Cliquez sur le lien pour rejoindre : ${lobbyLink}`);
+      window.location.href = lobbyLink; // Redirige l'utilisateur vers la page du lobby
+    }
+  });
+</script>
+
+      
+</head>
+<body>
+    <h1>Among Legend</h1>
+        <button class="mon-bouton" onclick="choisirTypePartie()">commencer</button>
+</body>
+</html>
