@@ -1,0 +1,29 @@
+body {
+    background-image: url("C:/Users/axelf/OneDrive/Documents/League of Legends/amongLegend/images/nom.png");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size: 100%;
+    background-position-y: 35%;
+}
+
+#nom {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 500px;
+    border-radius: 10%;
+
+    background-color: rgba(6, 146, 167, 0.568);
+    color: white;
+}
+
+.mb-3 {
+    position: relative;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+}
