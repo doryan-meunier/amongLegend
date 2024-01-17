@@ -21,7 +21,7 @@
 
         .left:hover,
         .right:hover {
-            flex: 3.5; /* 70% de l'écran (3.5/5) */
+            flex: 3; /* 70% de l'écran (3.5/5) */
         }
 
         .left span,
