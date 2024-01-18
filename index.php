@@ -14,33 +14,36 @@
         <input class="form-control inputNom" name="inputNomUser" id="inputNomUser" aria-describedby="emailHelp">
         <label for="inputTagUser" class="form-label inputTag">Entrer votre tag</label>
         <input class="form-control inputNom" name="inputTagUser" id="inputTagUser" aria-describedby="emailHelp">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
     </div>
 </form>
 
 <script>
-    // Récupérer les paramètres nécessaires
-    var gameName = "Doteos";
-    var tagLine = "GOD";
-    
-    // Construire l'URL du proxy PHP
-    var proxyUrl = "http://localhost/amongLegend/proxy.php?gameName=" + encodeURIComponent(gameName) + "&tagLine=" + encodeURIComponent(tagLine);
-    
-    // Effectuer la requête AJAX avec le proxy PHP
-    fetch(proxyUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('La requête a échoué avec le statut ' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Traiter les données ici
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Erreur lors de la requête AJAX:', error);
-        });
+    function submitForm() {
+        // Récupérer les valeurs du formulaire
+        var nom = document.getElementById("inputNomUser").value;
+        var tag = document.getElementById("inputTagUser").value;
+        
+        // Construire l'URL du proxy PHP avec les valeurs du formulaire
+        var proxyUrl = "http://localhost/amongLegend/proxy.php?gameName=" + encodeURIComponent(nom) + "&tagLine=" + encodeURIComponent(tag);
+        
+        // Effectuer la requête AJAX avec le proxy PHP
+        fetch(proxyUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('La requête a échoué avec le statut ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Traiter les données ici
+                console.log(data);
+                window.location.href = 'choixPartie.html';
+            })
+            .catch(error => {
+                console.error('Erreur lors de la requête AJAX:', error);
+            });
+    }
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

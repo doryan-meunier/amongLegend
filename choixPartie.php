@@ -1,3 +1,21 @@
+<?php
+// nouvellePage.php
+
+session_start();
+
+// Vérifier si les variables de session existent
+if(isset($_SESSION['puuid']) && isset($_SESSION['nom'])) {
+    $puuid = $_SESSION['puuid'];
+    $nom = $_SESSION['nom'];
+
+    // Faites ce que vous avez besoin de faire avec le PUUID et le nom
+    echo "Nom: $nom";
+} else {
+    // Rediriger l'utilisateur s'il manque des données en session
+    header("Location: index.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
