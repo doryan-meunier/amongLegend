@@ -1,0 +1,3 @@
+user : var globale utilisé pour stoquer le nom d'utilisateur (depuis l'API LOL)
+
+document.getElementById('btnItineraireFini').addEventListener('click', function () {/*TOUTES LES FONCTIONS A*/}); 
