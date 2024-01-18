@@ -1,21 +1,20 @@
 <?php
-// nouvellePage.php
-
 session_start();
 
-// Vérifier si les variables de session existent
+// Vérifie si les variables de session existent
 if(isset($_SESSION['puuid']) && isset($_SESSION['nom'])) {
     $puuid = $_SESSION['puuid'];
     $nom = $_SESSION['nom'];
 
-    // Faites ce que vous avez besoin de faire avec le PUUID et le nom
+    // Affiche le nom
     echo "Nom: $nom";
 } else {
-    // Rediriger l'utilisateur s'il manque des données en session
+    // Redirige l'utilisateur s'il manque des données en session
     header("Location: index.php");
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,13 +24,13 @@ if(isset($_SESSION['puuid']) && isset($_SESSION['nom'])) {
     <link rel="stylesheet" href="css/stylePartie.css">
 </head>
 <body>
-<div class="left" onmouseover="expand('left')" onmouseout="shrink('left')">
-        <span>Rejoindre une partie</span>
-    </div>
-    <div class="right" onmouseover="expand('right')" onmouseout="shrink('right')">
-        <span>Créer une partie</span>
-    </div>
 
+<div class="left" onmouseover="expand('left')" onmouseout="shrink('left')">
+    <span>Rejoindre une partie</span>
+</div>
+<div class="right" onmouseover="expand('right')" onmouseout="shrink('right')">
+    <span>Créer une partie</span>
+</div>
 
 </body>
 </html>
