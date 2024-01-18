@@ -1,3 +1,16 @@
+document.addEventListener("DOMContentLoaded", function () {
+    
+////////////                        index                        ////////////
+
+
+
+
+
+
+
+
+
+////////////                     choixPartie.                    ////////////
 function expand(side) {
     document.querySelector('.' + side).classList.add('hovered');
 }
@@ -14,4 +27,13 @@ document.querySelector('.left').addEventListener('click', function() {
 document.querySelector('.right').addEventListener('click', function() {
     // Redirection vers la page pour créer une partie
     window.location.href = 'page_creer_partie.html';
+});
+
+
+
+
+
+
+
+
 });
