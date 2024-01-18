@@ -1,40 +1,36 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
 
-        body {
-            margin: 0;
-            overflow: hidden;
-            display: flex;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-        }
+.left, .right {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: flex 0.5s ease-in-out;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
 
-        .left,
-        .right {
-            flex: 1;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: flex 0.5s ease-in-out;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        }
+.left:hover, .right:hover {
+    flex: 1.5;
+}
 
-        .left:hover,
-        .right:hover {
-            flex: 1.5;
-        }
+.left span, .right span {
+    font-size: 24px;
+    text-transform: uppercase;
+}
 
-        .left span,
-        .right span {
-            font-size: 24px;
-            text-transform: uppercase;
-        }
+.left {
+    background-color: #3498db; /* Couleur de la partie bleue */
+}
 
-        .left {
-            background-color: #3498db; /* Couleur de la partie bleue */
-        }
-
-        .right {
-            background-color: #e74c3c; /* Couleur de la partie rouge */
-            margin-left: -1px; /* Pour éviter tout espace entre les deux parties */
-        }
+.right {
+    background-color: #e74c3c; /* Couleur de la partie rouge */
+    margin-left: -1px; /* Pour éviter tout espace entre les deux parties */
+}
