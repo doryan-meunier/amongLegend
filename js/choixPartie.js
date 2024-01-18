@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
+
 ////////////                        index                        ////////////
 
 
@@ -21,18 +21,13 @@ function shrink(side) {
 
 document.querySelector('.left').addEventListener('click', function() {
     // Redirection vers la page pour rejoindre une partie
-    window.location.href = 'page_rejoindre_partie.html';
+    window.location.href = 'rejoindrePartie.html';
 });
 
 document.querySelector('.right').addEventListener('click', function() {
     // Redirection vers la page pour créer une partie
-    window.location.href = 'page_creer_partie.html';
+    window.location.href = 'creerPartie.html';
 });
-
-
-
-
-
 
 
 
