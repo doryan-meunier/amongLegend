@@ -1,9 +1,10 @@
 body {
-    background-image: url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/summonersRift.jpeg");
+    background-image: url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/SummonersRift.jpeg");
     background-repeat: no-repeat;
     background-attachment:fixed;
     background-size: 100%;
     background-position-y: 35%;
+    background-color: aqua;
 }
 .gameTypeContainer {
     width: fit-content;

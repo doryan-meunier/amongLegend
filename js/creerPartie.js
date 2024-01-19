@@ -16,9 +16,11 @@ function deselectionCarte(carte) {
 
 function toggleFond() {
     var body = document.getElementById('body');
-    bodyBackground = body.style.backgroundImage;
-    if (bodyBackground = 'url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/howlingAbyss.jpeg")')
-        bodyBackground = 'url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/SummonersRift.jpeg")';
+
+    console.log(body.style.backgroundImage);
+
+    if (body.style.backgroundImage == 'url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/howlingAbyss.jpeg")')
+        return body.style.backgroundImage = "url('https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/SummonersRift.jpeg')";
     else
-        bodyBackground = 'url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/howlingAbyss.jpeg")';
+        return body.style.backgroundImage = "url('https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/howlingAbyss.jpeg')";
 }
