@@ -16,10 +16,9 @@ function deselectionCarte(carte) {
 
 function toggleFond() {
     var body = document.getElementById('body');
+    var checkBox = document.getElementById('toggle');
 
-    console.log(body.style.backgroundImage);
-
-    if (body.style.backgroundImage == 'url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/howlingAbyss.jpeg")')
+    if (checkBox.checked == true)
         return body.style.backgroundImage = 'url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/SummonersRift.jpeg")';
     else
         return body.style.backgroundImage = 'url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/howlingAbyss.jpeg")';

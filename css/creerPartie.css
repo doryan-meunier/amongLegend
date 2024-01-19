@@ -4,13 +4,15 @@ body {
     background-attachment:fixed;
     background-size: 100%;
     background-position-y: 35%;
-    background-color: aqua;
+    background-color: rgb(46, 54, 48);
 }
 .gameTypeContainer {
     width: fit-content;
     position: relative;
     left: 50%;
     transform: translate(-50%);
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 .toggleContainer {
     position: relative;
