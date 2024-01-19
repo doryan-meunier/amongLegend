@@ -8,42 +8,50 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="role-card" id="Imposteur" onclick="carte(this.id)">
-        <img src="images/roles/impostor.jpg" alt="Imposteur">
-        <div class="role-info">
+<div class="gameTypeContainer" onclick="toggleFond()">
+    <input type="checkbox" id="toggle" class="toggleCheckbox" />
+    <label for="toggle" class='toggleContainer'>
+      <div>Normal Game</div>   
+      <div>Partie Perso</div>
+    </label>
+</div>
+
+<div class="carteContainer">
+    <div class="roleCarte" id="Imposteur" onclick="carte(this.id)">
+        <img src="images/creerPartie/roles/impostor.jpg" alt="Imposteur">
+        <div class="roleInfos">
             <h2>Imposteur</h2>
             <p>Faire perdre la game sans se faire démasquer</p>
         </div>
     </div>
     
-    <div class="role-card" id="Droide" onclick="carte(this.id)">
-        <img src="images/roles/droide.jpg" alt="Droide">
-        <div class="role-info">
+    <div class="roleCarte" id="Droide" onclick="carte(this.id)">
+        <img src="images/creerPartie/roles/droide.jpg" alt="Droide">
+        <div class="roleInfos">
             <h2>Droide</h2>
             <p>Gagner la game en suivant les instructions reçues</p>
         </div>
     </div>
     
-    <div class="role-card" id="Serpentin" onclick="carte(this.id)">
-        <img src="images/roles/serpentin.jpg" alt="Serpentin">
-        <div class="role-info">
+    <div class="roleCarte" id="Serpentin" onclick="carte(this.id)">
+        <img src="images/creerPartie/roles/serpentin.jpg" alt="Serpentin">
+        <div class="roleInfos">
             <h2>Serpentin</h2>
             <p>Gagner la game en ayant le plus de morts et de dégâts de sa team</p>
         </div>
     </div>
     
-    <div class="role-card" id="Double-face" onclick="carte(this.id)">
-        <img src="images/roles/doubleFace.jpg" alt="Double-face">
-        <div class="role-info">
+    <div class="roleCarte" id="Double-face" onclick="carte(this.id)">
+        <img src="images/creerPartie/roles/doubleFace.jpg" alt="Double-face">
+        <div class="roleInfos">
             <h2>Double-face</h2>
             <p>Change de rôle aléatoirement. Doit gagner la game en tant que gentil ou perdre en imposteur</p>
         </div>
     </div>
     
-    <div class="role-card" id="Super-héros" onclick="carte(this.id)">
-        <img src="images/roles/superHero.png" alt="Super-héros">
-        <div class="role-info">
+    <div class="roleCarte" id="Super-héros" onclick="carte(this.id)">
+        <img src="images/creerPartie/roles/superHero.png" alt="Super-héros">
+        <div class="roleInfos">
             <h2>Super-héros</h2>
             <p>Gagner la game en ayant le plus de dégâts, d'assistances et de kills. Gravement pénalisé en cas de défaite</p>
         </div>
