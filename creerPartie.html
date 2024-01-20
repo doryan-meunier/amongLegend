@@ -6,50 +6,154 @@
     <link rel="stylesheet" href="css/creerPartie.css">
     <title>Rejoindre partie</title>
 </head>
-<body>
+<body id="body">
 
-<div class="container">
-    <div class="role-card" id="Imposteur" onclick="carte(this.id)">
-        <img src="images/roles/impostor.jpg" alt="Imposteur">
-        <div class="role-info">
+<div class="gameTypeContainer">
+    <input type="checkbox" id="toggle" class="toggleCheckbox" />
+    <label for="toggle" class='toggleContainer'>
+      <div  onclick="toggleFond()">Normal Game</div>   
+      <div  onclick="toggleFond()">Partie Perso</div>
+    </label>
+</div>
+
+<div class="carteContainer">
+    <div class="roleCarte" id="Imposteur" onclick="carte(this.id)">
+        <img src="images/creerPartie/roles/impostor.jpg" alt="Imposteur">
+        <div class="roleInfos">
             <h2>Imposteur</h2>
             <p>Faire perdre la game sans se faire démasquer</p>
         </div>
     </div>
     
-    <div class="role-card" id="Droide" onclick="carte(this.id)">
-        <img src="images/roles/droide.jpg" alt="Droide">
-        <div class="role-info">
+    <div class="roleCarte" id="Droide" onclick="carte(this.id)">
+        <img src="images/creerPartie/roles/droide.jpg" alt="Droide">
+        <div class="roleInfos">
             <h2>Droide</h2>
             <p>Gagner la game en suivant les instructions reçues</p>
         </div>
     </div>
     
-    <div class="role-card" id="Serpentin" onclick="carte(this.id)">
-        <img src="images/roles/serpentin.jpg" alt="Serpentin">
-        <div class="role-info">
+    <div class="roleCarte" id="Serpentin" onclick="carte(this.id)">
+        <img src="images/creerPartie/roles/serpentin.jpg" alt="Serpentin">
+        <div class="roleInfos">
             <h2>Serpentin</h2>
             <p>Gagner la game en ayant le plus de morts et de dégâts de sa team</p>
         </div>
     </div>
     
-    <div class="role-card" id="Double-face" onclick="carte(this.id)">
-        <img src="images/roles/doubleFace.jpg" alt="Double-face">
-        <div class="role-info">
+    <div class="roleCarte" id="Double-face" onclick="carte(this.id)">
+        <img src="images/creerPartie/roles/doubleFace.jpg" alt="Double-face">
+        <div class="roleInfos">
             <h2>Double-face</h2>
             <p>Change de rôle aléatoirement. Doit gagner la game en tant que gentil ou perdre en imposteur</p>
         </div>
     </div>
     
-    <div class="role-card" id="Super-héros" onclick="carte(this.id)">
-        <img src="images/roles/superHero.png" alt="Super-héros">
-        <div class="role-info">
+    <div class="roleCarte" id="Super-héros" onclick="carte(this.id)">
+        <img src="images/creerPartie/roles/superHero.png" alt="Super-héros">
+        <div class="roleInfos">
             <h2>Super-héros</h2>
             <p>Gagner la game en ayant le plus de dégâts, d'assistances et de kills. Gravement pénalisé en cas de défaite</p>
         </div>
     </div>
 </div>
 
+
+
+<div class="playerContainer">
+
+    <div class="role-selection">
+        <ul class="role-list">
+            <li class="role-item" onclick="selectRole(this)">
+                <div class="player-banner">
+                    <img src="images/creerPartie/roles/superHero.png" alt="Player 1">
+                    <div class="player-info">
+                        <h3>Nom du Joueur 1</h3>
+                        <p>Rôles : Top, Mid</p>
+                    </div>
+                    <div class="fold"></div>
+                </div>
+            </li>
+            
+            <!-- Ajoute d'autres joueurs ici... -->
+
+        </ul>
+        <button onclick="confirmSelection()">Confirmer la Sélection</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!--
+<div class="playerContainer">
+    <div class="champion-selection">
+        
+        <div class="champion-card">
+            <div class="player-info">
+                <h3>Nom du Joueur 1</h3>
+                <p>Niveau 30</p>
+                <p>Rôle : Top</p>
+            </div>
+            <img src="images/creerPartie/roles/superHero.png" alt="Champion 1">
+        </div>
+
+        <div class="champion-card">
+            <div class="player-info">
+                <h3>Nom du Joueur 2</h3>
+                <p>Niveau 25</p>
+                <p>Rôle : Jungle</p>
+            </div>
+            <img src="champion_images/champion2.jpg" alt="Champion 2">
+        </div>
+
+        <div class="champion-card">
+            <div class="player-info">
+                <h3>Nom du Joueur 3</h3>
+                <p>Niveau 30</p>
+                <p>Rôle : mid</p>
+            </div>
+            <img src="champion_images/champion1.jpg" alt="Champion 1">
+        </div>
+
+        <div class="champion-card">
+            <div class="player-info">
+                <h3>Nom du Joueur 4</h3>
+                <p>Niveau 25</p>
+                <p>Rôle : bott</p>
+            </div>
+            <img src="champion_images/champion2.jpg" alt="Champion 2">
+        </div>
+
+        <div class="champion-card">
+            <div class="player-info">
+                <h3>Nom du Joueur 5</h3>
+                <p>Niveau 25</p>
+                <p>Rôle : supp</p>
+            </div>
+            <img src="champion_images/champion2.jpg" alt="Champion 2">
+        </div>
+        
+    </div>
+</div>
+
+<div class="champSelct">
+    <div class="role-selection">
+        <h2>Sélectionnez votre rôle</h2>
+        <ul class="role-list">
+            <li class="role-item" onclick="selectRole(this)">Top</li>
+            <li class="role-item" onclick="selectRole(this)">Jungle</li>
+            <li class="role-item" onclick="selectRole(this)">Mid</li>
+            <li class="role-item" onclick="selectRole(this)">ADC</li>
+            <li class="role-item" onclick="selectRole(this)">Support</li>
+        </ul>
+        <button onclick="confirmSelection()">Confirmer la Sélection</button>
+    </div>
+</div>
+-->
 <script src="js/creerPartie.js"></script>
 </body>
 </html>

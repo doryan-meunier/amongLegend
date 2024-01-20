@@ -1,46 +1,277 @@
 body {
-    background-image: url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/howlingAbyss.png");
+    background-image: url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/SummonersRift.jpeg");
     background-repeat: no-repeat;
     background-attachment:fixed;
     background-size: 100%;
     background-position-y: 35%;
+    background-color: rgb(46, 54, 48);
 }
+.gameTypeContainer {
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.toggleContainer {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    border: 3px solid #343434;
+    border-radius: 20px;
+    background: #343434;
+    font-weight: bold;
+    color: #343434;
+    cursor: pointer;
+}
+.toggleContainer::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0%;
+    border-radius:20px;
+    background: white;
+    transition: all 0.3s;
+}
+.toggleCheckbox:checked + .toggleContainer::before {
+    left: 50%;
+}
+.toggleContainer div {
+    padding: 6px;
+    text-align: center;
+    z-index: 1;
+}
+.toggleCheckbox {
+    display: none;
+}
+.toggleCheckbox:checked + .toggleContainer div:first-child{
+    color: white;
+    transition: color 0.3s;
+}
+.toggleCheckbox:checked + .toggleContainer div:last-child{
+    color: #343434;
+    transition: color 0.3s;
+}
+.toggleCheckbox + .toggleContainer div:first-child{
+    color: #343434;
+    transition: color 0.3s;
+}
+.toggleCheckbox + .toggleContainer div:last-child{
+    color: white;
+    transition: color 0.3s;
+}
+  
 
-.container {
+.carteContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
     justify-content: flex-start;
-    margin-left: 2rem;
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
 }
-.role-card {
+.roleCarte {
     border-radius: 8px;
     overflow: hidden;
     width: 300px;
-    margin: 20px;
+    background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    margin: 2rem;
 }
 
-.role-card img {
+.roleCarte img {
     width: 100%;
     height: 150px;
     object-fit: fill;
     border-bottom: 1px solid #000; /* Ajoute une bordure noire en bas */
 }
 
-.role-info {
+.roleInfos {
     padding: 20px;
 }
 
-.role-info h2 {
+.roleInfos h2 {
     margin: 0;
     font-size: 24px;
     color: #000000;
 }
 
-.role-info p {
+.roleInfos p {
     margin: 10px 0 0;
     font-size: 16px;
     color: #000000;
 }
+
+
+
+/*****************************************************************************************************************************/
+
+
+.playerContainer {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.role-selection {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.role-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.role-item {
+    cursor: pointer;
+}
+
+.player-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 200px;
+}
+
+.player-info {
+    flex-grow: 1;
+    padding: 10px;
+    text-align: left;
+}
+
+.player-info h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.player-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.fold {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ccc;
+}
+
+
+/*
+.playerContainer {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.champion-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.champion-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 200px;
+}
+
+.player-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.player-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.player-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.champion-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+
+
+.champSelect {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.role-selection {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.role-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.role-item {
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #27ae60;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+*/
