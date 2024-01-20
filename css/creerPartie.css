@@ -132,12 +132,26 @@ body {
     transform: translate(-50%);
 }
 
-.joueur {
+
+.player {
+    display: none;
     margin: 50px;
 }
-.deuxieme, .quatrieme {
+.deuxieme, .troisieme {
     margin-top: 100px;
 }
-.troisieme {
+.boutonPlus {
+    cursor: pointer;
+    margin: 135px;
+    margin-top: 370px;
+    opacity: 0.85;
+    border-radius: 50%;
+}
+.boutonPlus:hover {
+    box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.26);
+    opacity: 100%;
+}
+.premier {
     margin-top: 150px;
+    display: block;
 }
