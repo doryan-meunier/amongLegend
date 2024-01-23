@@ -47,3 +47,25 @@ function toggleFond() {
 function changerPosition(idJoueur, idBouton) {
 
 }
+
+
+
+
+
+/////////////////////////            RECUPERATION JSON                     ///////////////////////////
+
+$.ajax({
+    type: "GET",
+    url: "jsonBdd.php",
+    dataType: "json",
+    success: function (data) {
+        console.log(data);
+    },
+    error: function (xhr, status, error) {
+        console.error("Erreur lors de la récupération des données:", status, error);
+    }
+});
+
+
+
+/////////////////////////            RECUPERATION JSON                     ///////////////////////////

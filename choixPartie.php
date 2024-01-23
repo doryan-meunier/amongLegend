@@ -13,6 +13,7 @@ if(isset($_SESSION['puuid']) && isset($_SESSION['nom'])) {
     header("Location: index.php");
     exit();
 }
+header("Location: rejoindrePartie.php");
 ?>
 
 <!DOCTYPE html>

@@ -1,3 +1,6 @@
+<?php
+    header('Location: creerPartie.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
