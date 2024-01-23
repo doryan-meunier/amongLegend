@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        /**************************************************** FOND D'ECRAN ****************************************************/
+
+body {
+    background-image: url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/SummonersRift.jpeg");
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: 100%;
+    background-position-y: 35%;
+    background-color: rgb(46, 54, 48);
+}
+
+
+
+/**************************************************** BOUTON TYPE PARTIE ****************************************************/
+.gameTypeContainer {
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.toggleContainer {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    border: 3px solid #343434;
+    border-radius: 20px;
+    background: #343434;
+    font-weight: bold;
+    color: #343434;
+    cursor: pointer;
+}
+.toggleContainer::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0%;
+    border-radius:20px;
+    background: white;
+    transition: all 0.3s;
+}
+.toggleCheckbox:checked + .toggleContainer::before {
+    left: 50%;
+}
+.toggleContainer div {
+    padding: 6px;
+    text-align: center;
+    z-index: 1;
+}
+.toggleCheckbox {
+    display: none;
+}
+.toggleCheckbox:checked + .toggleContainer div:first-child{
+    color: white;
+    transition: color 0.3s;
+}
+.toggleCheckbox:checked + .toggleContainer div:last-child{
+    color: #343434;
+    transition: color 0.3s;
+}
+.toggleCheckbox + .toggleContainer div:first-child{
+    color: #343434;
+    transition: color 0.3s;
+}
+.toggleCheckbox + .toggleContainer div:last-child{
+    color: white;
+    transition: color 0.3s;
+}
+  
+
+
+
+/**************************************************** ROLE SELECTION ****************************************************/
+.carteContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+.roleCarte {
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    margin: 2rem;
+}
+
+.roleCarte img {
+    width: 100%;
+    height: 150px;
+    object-fit: fill;
+    border-bottom: 1px solid #000; /* Ajoute une bordure noire en bas */
+}
+
+.roleInfos {
+    padding: 20px;
+}
+
+.roleInfos h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #000000;
+}
+
+.roleInfos p {
+    margin: 10px 0 0;
+    font-size: 16px;
+    color: #000000;
+}
+
+
+
+/**************************************************** AFFICHAGE DES JOUEURS ****************************************************/
+
+
+.normalPlayerContainer {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+
+.normalPlayer {
+    display: none;
+    margin: 50px;
+}
+.normalDeuxieme, .normalTroisieme {
+    margin-top: 100px;
+}
+.boutonPlus {
+    cursor: pointer;
+    margin: 135px;
+    margin-top: 370px;
+    opacity: 0.85;
+    border-radius: 50%;
+}
+.boutonPlus:hover {
+    box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.26);
+    opacity: 100%;
+}
+.normalPremier {
+    margin-top: 150px;
+    display: block;
+}
+
+    </style>
+    <title>Rejoindre partie</title>
+</head>
+<body id="body">
+
+<div class="gameTypeContainer">
+    <input type="checkbox" id="toggle" class="toggleCheckbox" />
+    <label for="toggle" class='toggleContainer'>
+      <div  onclick="toggleFond()">Normal Game</div>   
+      <div  onclick="toggleFond()">Partie Perso</div>
+    </label>
+</div>
+
+<div class="carteContainer">
+    <div class="roleCarte" id="Imposteur" onclick="carte(this.id)">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/roles/impostor.jpg" alt="Imposteur">
+        <div class="roleInfos">
+            <h2>Imposteur</h2>
+            <p>Faire perdre la game sans se faire démasquer</p>
+        </div>
+    </div>
+    
+    <div class="roleCarte" id="Droide" onclick="carte(this.id)">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/roles/droide.jpg" alt="Droide">
+        <div class="roleInfos">
+            <h2>Droïde</h2>
+            <p>Gagner la game en suivant les instructions reçues</p>
+        </div>
+    </div>
+    
+    <div class="roleCarte" id="Serpentin" onclick="carte(this.id)">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/roles/serpentin.jpg" alt="Serpentin">
+        <div class="roleInfos">
+            <h2>Serpentin</h2>
+            <p>Gagner la game en ayant le plus de morts et de dégâts de sa team</p>
+        </div>
+    </div>
+    
+    <div class="roleCarte" id="Double-face" onclick="carte(this.id)">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/roles/doubleFace.jpg" alt="Double-face">
+        <div class="roleInfos">
+            <h2>Double-face</h2>
+            <p>Change de rôle aléatoirement. Doit gagner la game en tant que gentil ou perdre en imposteur</p>
+        </div>
+    </div>
+    
+    <div class="roleCarte" id="Super-héros" onclick="carte(this.id)">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/roles/superHero.png" alt="Super-héros">
+        <div class="roleInfos">
+            <h2>Super-héros</h2>
+            <p>Gagner la game en ayant le plus de dégâts, d'assistances et de kills. Gravement pénalisé en cas de défaite</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="normalPlayerContainer">
+
+    <div class="joueur">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/joueurs/plusJoueur.png" alt="Player 4" class="boutonPlus">     
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/joueurs/plusJoueur.png" alt="Player 4" class="normalPlayer normalQuatrieme">
+    </div>
+
+    <div class="joueur">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/joueurs/plusJoueur.png" alt="Player 2" class="boutonPlus">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/joueurs/joueur.png" alt="Player 2" class="normalPlayer normalDeuxieme">
+    </div>
+
+    <div class="joueur">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/joueurs/joueur.png" alt="Player 1" class="normalPlayer normalPremier">
+    </div>
+
+    <div class="joueur">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/joueurs/plusJoueur.png" alt="Player 3" class="boutonPlus">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/joueurs/joueur.png" alt="Player 3" class="normalPlayer normalTroisieme">
+    </div>
+
+    <div class="joueur">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/joueurs/plusJoueur.png" alt="Player 5" class="boutonPlus">
+        <img src="https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/joueurs/joueur.png" alt="Player 5" class="normalPlayer normalCinquieme">
+    </div>
+</div>
+
+
+
+
+<script>
+    function carte(idcarte) {
+    var carte = document.getElementById(idcarte);
+    if (carte.style.backgroundColor == 'rgb(138, 255, 161)')
+        deselectionCarte(carte);
+    else
+        selectionCarte(carte);
+}
+
+function selectionCarte(carte) {
+    carte.style.backgroundColor = 'rgb(138, 255, 161)';
+}
+
+function deselectionCarte(carte) {
+    carte.style.backgroundColor = 'white';
+}
+
+function toggleFond() {
+    var body = document.getElementById('body');
+    var checkBox = document.getElementById('toggle');
+
+    if (checkBox.checked == true)
+        return body.style.backgroundImage = 'url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/SummonersRift.jpeg")';
+    else
+        return body.style.backgroundImage = 'url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/creerPartie/howlingAbyss.jpeg")';
+}
+</script>
+
+<script src="/socket.io/socket.io.js">
+    var socket = io();
+</script>
+
+</body>
+</html>
