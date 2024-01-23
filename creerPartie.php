@@ -145,7 +145,6 @@
 
 
 
-    y
 <!--
     <div class="joueurPerso droite cadre">
         <div id="persoj2">
