@@ -15,7 +15,7 @@
       <div  onclick="toggleFond()">Partie Perso</div>
     </label>
 </div>
-<!--
+
 <div class="carteContainer">
     <div class="roleCarte" id="Imposteur" onclick="carte(this.id)">
         <img src="images/creerPartie/roles/impostor.jpg" alt="Imposteur">
@@ -58,7 +58,7 @@
     </div>
 </div>
 
--->
+
 
 <div id="normalPlayerContainer">
 
@@ -92,6 +92,7 @@
     <div class="joueurPerso gauche cadre">
         <div id="persoj1">
             <img src="images/creerPartie/joueurs/pp.png" alt="pp">
+            <p>nom jouer</p>
         </div>
     </div>
 
