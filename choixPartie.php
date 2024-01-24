@@ -25,12 +25,14 @@ if(isset($_SESSION['puuid']) && isset($_SESSION['nom'])) {
 </head>
 <body>
 
-<div class="left" onmouseover="expand('left')" onmouseout="shrink('left')">
+<div class="left">
     <span>Rejoindre une partie</span>
 </div>
-<div class="right" onmouseover="expand('right')" onmouseout="shrink('right')">
+<div class="right" onclick="choixp()">
     <span>Créer une partie</span>
 </div>
+
+<script src="js/choixPartie.js"></script>
 
 </body>
 </html>

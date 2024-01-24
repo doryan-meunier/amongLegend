@@ -5,7 +5,7 @@ session_start();
 // Assurez-vous que $_SESSION['puuid'] et $_SESSION['nom'] sont définis
 if (isset($_SESSION['puuid']) && isset($_SESSION['nom'])) {
     // Connexion à la base de données (à adapter avec vos propres informations de connexion)
-    $conn = mysqli_connect("localhost", "votre_nom_utilisateur", "votre_mot_de_passe", "amongLegend");
+    $conn = mysqli_connect("localhost", "root", "", "amongLegend");
 
     // Vérification de la connexion à la base de données
     if (!$conn) {
