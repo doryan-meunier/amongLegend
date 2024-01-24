@@ -44,4 +44,6 @@ if (isset($_SESSION['puuid']) && isset($_SESSION['nom'])) {
     // Redirection vers la page de choix de partie
     header("Location: choixPartie.php");
 }
+else {
+}
 ?>

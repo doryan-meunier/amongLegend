@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['idPartie'])) {
+        header("Location: index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,6 +23,9 @@
 </div>
 
 <div class="carteContainer">
+<?php
+    
+?>
     <div class="roleCarte" id="Imposteur" onclick="carte(this.id)">
         <img src="images/creerPartie/roles/impostor.jpg" alt="Imposteur">
         <div class="roleInfos">
@@ -246,4 +255,5 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="js/creerPartie.js"></script>
 </body>
+
 </html>

@@ -19,6 +19,7 @@ if (isset($_SESSION['idJoueur'])) {
 
     // Récupération de l'idPartie nouvellement créé
     $idPartie = mysqli_insert_id($conn);
+    $_SESSION['idPartie'] = $idPartie;
 
     // Initialisation d'une nouvelle ligne dans la table "roles"
     $queryInitRoles = "INSERT INTO roles (idPartie, imposteur, droide, serpentin, doubleFace, superHeros) VALUES ('$idPartie', DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)";
@@ -29,5 +30,9 @@ if (isset($_SESSION['idJoueur'])) {
 
     // Redirection vers la page de choix de partie
     header("Location: creerPartie.php");
+}
+else
+{
+    header("Location: index.php");
 }
 ?>
