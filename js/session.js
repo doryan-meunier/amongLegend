@@ -21,12 +21,12 @@ function shrink(side) {
 
 document.querySelector('.left').addEventListener('click', function() {
     // Redirection vers la page pour rejoindre une partie
-    window.location.href = 'rejoindrePartie.html';
+    window.location.href = 'rejoindrePartie.php';
 });
 
 document.querySelector('.right').addEventListener('click', function() {
     // Redirection vers la page pour créer une partie
-    window.location.href = 'creerPartie.html';
+    window.location.href = 'initialisationPartie.php';
 });
 
 

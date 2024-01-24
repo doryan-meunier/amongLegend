@@ -158,7 +158,6 @@ body {
 /******* Partie Perso *******/
 #persoPlayerContainer {
     display: none;
-    margin-top: 50px;
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
@@ -175,6 +174,10 @@ body {
 .joueurPerso {
     width: 40%;
     margin-top: 90px;
+}
+.infoConteneur {
+    display: flex;
+    width: 100%;
 }
 
 

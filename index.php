@@ -1,3 +1,10 @@
+<?php
+// Démarre ou restaure la session
+session_start();
+
+// Détruit toutes les données de la session
+//session_destroy();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

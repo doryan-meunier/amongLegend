@@ -10,9 +10,9 @@
 
 <div class="gameTypeContainer">
     <input type="checkbox" id="toggle" class="toggleCheckbox" />
-    <label for="toggle" class='toggleContainer'>
-      <div  onclick="toggleFond()">Normal Game</div>   
-      <div  onclick="toggleFond()">Partie Perso</div>
+    <label for="toggle" class='toggleContainer' onclick="toggleFond()">
+      <div>Normal Game</div>   
+      <div>Partie Perso</div>
     </label>
 </div>
 
@@ -90,7 +90,7 @@
 <div id="persoPlayerContainer">
 
     <div class="joueurPerso gauche cadre">
-        <div id="persoj1">
+        <div id="persoj1" class="infoConteneur">
             <img src="images/creerPartie/joueurs/pp.png" alt="pp">
             <p>nom jouer</p>
         </div>

@@ -17,7 +17,7 @@ function submitForm() {
         .then(data => {
             //Traite les données
             console.log(data);
-            window.location.href = 'choixPartie.php';
+            window.location.href = 'creerJoueur.php';
         })
         .catch(error => {
             console.error('Erreur lors de la requête AJAX:', error);
