@@ -25,7 +25,7 @@ if(isset($_SESSION['puuid']) && isset($_SESSION['nom'])) {
 </head>
 <body>
 
-<div class="left">
+<div class="left" onclick="choixpj()">
     <span>Rejoindre une partie</span>
 </div>
 <div class="right" onclick="choixp()">

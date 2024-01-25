@@ -5,7 +5,7 @@ session_start();
 // Assurez-vous que $_SESSION['idJoueur'] est défini (peut être défini après l'initialisation du joueur)
 if (isset($_SESSION['idJoueur'])) {
     // Connexion à la base de données (à adapter avec vos propres informations de connexion)
-    $conn = mysqli_connect("localhost", "root", "", "amongLegend");
+    $conn = mysqli_connect("localhost", "root", "root", "amongLegend");
 
     // Vérification de la connexion à la base de données
     if (!$conn) {
