@@ -2,20 +2,20 @@
 DROP TABLE IF EXISTS parties;
 CREATE TABLE IF NOT EXISTS parties (
     idPartie INT AUTO_INCREMENT PRIMARY KEY,
+    nomPartie varchar(50),
     idHost INT,
-    typePartie BOOLEAN DEFAULT FALSE, -- FALSE = normal game, TRUE = partie perso'
-    FOREIGN KEY (idHost) REFERENCES joueurs(idJoueurs)
+    typePartie BOOLEAN DEFAULT FALSE -- FALSE = normal game, TRUE = partie perso'
 );
 
 -- Création de la table "roles"
 DROP TABLE IF EXISTS roles;
 CREATE TABLE IF NOT EXISTS roles (
     idPartie INT,
-    imposteur BIT DEFAULT FALSE,
-    droide BIT DEFAULT FALSE,
-    serpentin BIT DEFAULT FALSE,
-    doubleFace BIT DEFAULT FALSE,
-    superHeros BIT DEFAULT FALSE,
+    imposteur BOOLEAN DEFAULT FALSE,
+    droide BOOLEAN DEFAULT FALSE,
+    serpentin BOOLEAN DEFAULT FALSE,
+    doubleFace BOOLEAN DEFAULT FALSE,
+    superHeros BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (idPartie) REFERENCES parties(idPartie)
 );
 
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS joueurs (
     idPartie INT,
     puuid VARCHAR(255),
     nom VARCHAR(50),
-    host BIT,
+    host BOOLEAN,
     numeroJoueur INT,
     FOREIGN KEY (idPartie) REFERENCES parties(idPartie)
 );
