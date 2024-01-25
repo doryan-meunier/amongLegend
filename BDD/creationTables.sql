@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS parties (
 -- Création de la table "roles"
 DROP TABLE IF EXISTS roles;
 CREATE TABLE IF NOT EXISTS roles (
-    idPartie INT,
+    idPartie INT PRIMARY KEY,
     imposteur BOOLEAN DEFAULT FALSE,
     droide BOOLEAN DEFAULT FALSE,
     serpentin BOOLEAN DEFAULT FALSE,
