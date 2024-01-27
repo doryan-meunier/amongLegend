@@ -1,3 +1,11 @@
+body {
+    background-image: url("https://raw.githubusercontent.com/doryan-meunier/amongLegend/main/images/rejoindrePartie/fd rejoindrePartie.jpeg");
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: 100%;
+    background-position-y: 35%;
+    background-color: rgb(46, 54, 48);
+}
 h3 {
     text-align: center;
     margin-top: 50px; /* Ajustez selon vos besoins pour positionner le titre verticalement */
