@@ -1,0 +1,35 @@
+h3 {
+    text-align: center;
+    margin-top: 50px; /* Ajustez selon vos besoins pour positionner le titre verticalement */
+}
+
+.conteneur-encadrement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.encadrement-cartes {
+    border: 1px solid #ccc; /* Couleur de la bordure de l'encadrement */
+    padding: 20px;
+    border-radius: 10px; /* Rayon des coins de l'encadrement */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; /* Ombre de l'encadrement */
+    width: 300px; /* Ajustez selon la largeur souhaitée pour chaque carte */
+    margin: 20px;
+}
+
+.card-header,
+.card-body {
+    text-align: center; /* Centrer le texte à l'intérieur de la card */
+}
+.conteneur-global {
+    margin: 0 auto; /* Centrer le contenu */
+    max-width: 800px; /* Ajustez selon la largeur souhaitée */
+    border: 1px solid #ccc; /* Ajoutez la bordure avec une couleur de votre choix */
+    padding: 20px; /* Ajoutez un espace intérieur pour la lisibilité */
+    border-radius: 10px; /* Ajoutez un rayon aux coins de la bordure */
+}
+.card {
+    width: 400px; /* Ajustez la largeur selon vos préférences */
+    margin: 20px;
+}

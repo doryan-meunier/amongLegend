@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: *");
 //Récupère les paramètres du formulaire
 $gameName = $_GET['gameName'];
 $tagLine = $_GET['tagLine'];
-$apiKey = 'RGAPI-1ab746b2-ad57-48ff-843e-3c48e8e029d8';
+$apiKey = 'RGAPI-4007140b-d559-47ad-88ec-b66757f8a415';
 
 //Construit l'URL de l'API de Riot Games
 $url = "https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/$gameName/$tagLine?api_key=$apiKey";
