@@ -15,23 +15,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rejoindre_partie'])) 
     $partie_id = $_POST['partie_id'];
 
     // Évitez les attaques par injection SQL en utilisant une requête préparée
-    $update_query = $conn->prepare("UPDATE joueurs SET idPartie = :partie_id WHERE idJoueur = :joueur_id");
-    $update_query->bindParam(':partie_id', $partie_id, PDO::PARAM_INT);
-    $update_query->bindParam(':joueur_id', $_SESSION['id'], PDO::PARAM_INT);
+    $select_query = $conn->prepare("SELECT nomPartie, motdepasse FROM parties WHERE idPartie = :partie_id");
+    $select_query->bindParam(':partie_id', $partie_id, PDO::PARAM_INT);
+    $select_query->execute();
+    $partie_info = $select_query->fetch(PDO::FETCH_ASSOC);
 
-    // Exécutez la requête de mise à jour
-    if ($update_query->execute()) {
-        // Redirigez l'utilisateur vers la page actuelle après la mise à jour
-        header('Location: rejoindrePartie.php');
-        exit();
+    // Vérifiez si un mot de passe est requis
+    $motdepasse_requis = !empty($partie_info['motdepasse']);
+
+    // Si un mot de passe est requis, affichez un formulaire de saisie du mot de passe
+    if ($motdepasse_requis) {
+        // Vérifiez si le mot de passe a été soumis dans le formulaire
+        if (isset($_POST['motdepasse'])) {
+            $motdepasse_saisi = $_POST['motdepasse'];
+            echo $partie_info['motdepasse'];
+
+            // Vérifiez si le mot de passe saisi correspond au mot de passe de la partie
+            if (($motdepasse_saisi = $partie_info['motdepasse'])) {
+                // Mot de passe correct, mettez à jour la base de données et redirigez
+                updateIdPartie($partie_id);
+                header('Location: creerPartie.php');
+                exit();
+            } else {
+                // Mot de passe incorrect, affichez un message d'erreur
+                $error_message = "Mot de passe incorrect.";
+            }
+        }
     } else {
-        // Gérez les erreurs ici, par exemple affichez un message d'erreur
-        echo "Erreur lors de la mise à jour de l'idPartie. Raison : " . implode(" ", $update_query->errorInfo());
+        // Aucun mot de passe requis, mettez à jour la base de données et redirigez
+        updateIdPartie($partie_id);
+        header('Location: creerPartie.php');
+        exit();
     }
 }
 
+// Fonction pour mettre à jour la base de données avec l'ID de la partie
+function updateIdPartie($partie_id) {
+    global $conn;
+    $update_query = $conn->prepare("UPDATE joueurs SET idPartie = :partie_id WHERE idJoueur = :joueur_id");
+    $update_query->bindParam(':partie_id', $partie_id, PDO::PARAM_INT);
+    $update_query->bindParam(':joueur_id', $_SESSION['id'], PDO::PARAM_INT);
+    $update_query->execute();
+}
+
 // Récupérez les informations sur les parties
-$query = "SELECT p.idPartie, p.nomPartie, j.nom as createurNom FROM parties p 
+$query = "SELECT p.idPartie, p.nomPartie, j.nom as createurNom, p.motdepasse FROM parties p 
           INNER JOIN joueurs j ON p.idHost = j.idJoueur";
 $resultat = $conn->query($query);
 
@@ -91,13 +119,27 @@ $resultat = $conn->query($query);
                       <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; margin-right: 20%; margin-left: 20%; !important">
                           <div class="card-header">' . htmlspecialchars($ligne['nomPartie']) . '</div>
                           <div class="card-body">
-                              <h5 class="card-title">Créateur : ' . htmlspecialchars($ligne['createurNom']) . '</h5>
-                              <form method="post" action="">
-                                  <input type="hidden" name="partie_id" value="' . $ligne['idPartie'] . '">
-                                  <button type="submit" name="rejoindre_partie" class="btn btn-primary">Rejoindre Partie</button>
-                              </form>
-                          </div>
-                      </div><br>';
+                              <h5 class="card-title">Créateur : ' . htmlspecialchars($ligne['createurNom']) . '</h5>';
+
+                // Affichez le formulaire de saisie du mot de passe si requis
+                if (!empty($ligne['motdepasse'])) {
+                    echo '<form method="post" action="">
+                              <div class="mb-3">
+                                  <label for="motdepasse" class="form-label">Mot de passe :</label>
+                                  <input type="password" name="motdepasse" class="form-control" required>
+                              </div>
+                              <input type="hidden" name="partie_id" value="' . $ligne['idPartie'] . '">
+                              <button type="submit" name="rejoindre_partie" class="btn btn-primary">Rejoindre Partie</button>
+                          </form>';
+                } else {
+                    // Aucun mot de passe requis, affichez directement le bouton de rejoindre
+                    echo '<form method="post" action="">
+                              <input type="hidden" name="partie_id" value="' . $ligne['idPartie'] . '">
+                              <button type="submit" name="rejoindre_partie" class="btn btn-primary">Rejoindre Partie</button>
+                          </form>';
+                }
+
+                echo '</div></div><br>';
             }
         } else {
             // Aucune partie trouvée, affichez un message
