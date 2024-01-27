@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS parties;
 CREATE TABLE IF NOT EXISTS parties (
     idPartie INT AUTO_INCREMENT PRIMARY KEY,
     nomPartie varchar(50),
+    motdepasse varchar(10) DEFAULT NULL,
     idHost INT,
     typePartie BOOLEAN DEFAULT FALSE -- FALSE = normal game, TRUE = partie perso'
 );
@@ -16,7 +17,7 @@ CREATE TABLE IF NOT EXISTS roles (
     serpentin BOOLEAN DEFAULT FALSE,
     doubleFace BOOLEAN DEFAULT FALSE,
     superHeros BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (idPartie) REFERENCES parties(idPartie)
+    FOREIGN KEY (idPartie) REFERENCES parties(idPartie) ON DELETE CASCADE
 );
 
 -- Création de la table "joueurs"
@@ -28,7 +29,7 @@ CREATE TABLE IF NOT EXISTS joueurs (
     nom VARCHAR(50),
     host BOOLEAN,
     numeroJoueur INT,
-    FOREIGN KEY (idPartie) REFERENCES parties(idPartie)
+    FOREIGN KEY (idPartie) REFERENCES parties(idPartie) ON DELETE SET NULL
 );
 
 -- Création de la table "sauvegarde"
