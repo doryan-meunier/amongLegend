@@ -6,6 +6,8 @@ session_start();
 if (isset($_SESSION['idJoueur'])) {
     if(isset($_POST['envoie'])){
     // Connexion à la base de données (à adapter avec vos propres informations de connexion)
+    $nomPartie = $_POST['nomPartie'];
+    $password = $_POST['password'];
     $conn = mysqli_connect("localhost", "root", "root", "amongLegend");
 
     // Vérification de la connexion à la base de données
@@ -15,7 +17,7 @@ if (isset($_SESSION['idJoueur'])) {
 
     // Initialisation d'une nouvelle partie dans la table "parties"
     $idHost = $_SESSION['idJoueur'];
-    $queryInitPartie = "INSERT INTO parties (idHost, typePartie) VALUES ('$idHost', DEFAULT)";
+    $queryInitPartie = "INSERT INTO parties (nomPartie, motdepasse,idHost, typePartie) VALUES ('$nomPartie','$password','$idHost', DEFAULT)";
     mysqli_query($conn, $queryInitPartie);
 
     // Récupération de l'idPartie nouvellement créé
@@ -53,16 +55,16 @@ else
     <title>creation avant partie</title>
 </head>
 <body>
-<form>
+<form method="post" action="">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">nom de la partie</label>
-    <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputEmail1" class="form-label">Nom de la partie</label>
+    <input type="text" class="form-control" name="nomPartie" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
   </div>
-  <button type="submit" class="btn btn-primary" name="envoie">creer la partie</button>
+  <button type="submit" class="btn btn-primary" name="envoie">Créer la partie</button>
 </form>
 
 </body>
