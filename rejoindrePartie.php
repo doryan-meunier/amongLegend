@@ -28,10 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rejoindre_partie'])) 
         // Vérifiez si le mot de passe a été soumis dans le formulaire
         if (isset($_POST['motdepasse'])) {
             $motdepasse_saisi = $_POST['motdepasse'];
-            echo $partie_info['motdepasse'];
 
             // Vérifiez si le mot de passe saisi correspond au mot de passe de la partie
-            if (($motdepasse_saisi = $partie_info['motdepasse'])) {
+            if (($motdepasse_saisi == $partie_info['motdepasse'])) {
                 // Mot de passe correct, mettez à jour la base de données et redirigez
                 updateIdPartie($partie_id);
                 header('Location: creerPartie.php');
@@ -58,11 +57,13 @@ function updateIdPartie($partie_id) {
     $update_query->execute();
 }
 
-// Récupérez les informations sur les parties
-$query = "SELECT p.idPartie, p.nomPartie, j.nom as createurNom, p.motdepasse FROM parties p 
-          INNER JOIN joueurs j ON p.idHost = j.idJoueur";
+// Récupérez les informations sur les parties avec le nombre de joueurs
+$query = "SELECT p.idPartie, p.nomPartie, j.nom as createurNom, p.motdepasse, COUNT(j.idJoueur) AS nbJoueurs, p.typePartie
+          FROM parties p
+          LEFT JOIN joueurs j ON p.idPartie = j.idPartie
+          INNER JOIN joueurs jh ON p.idHost = jh.idJoueur
+          GROUP BY p.idPartie";
 $resultat = $conn->query($query);
-
 ?>
 
 <!DOCTYPE html>
@@ -121,6 +122,13 @@ $resultat = $conn->query($query);
                           <div class="card-body">
                               <h5 class="card-title">Créateur : ' . htmlspecialchars($ligne['createurNom']) . '</h5>';
 
+                // Calcul du ratio nbjoueur/maxjoueur
+                $nbJoueurs = $ligne['nbJoueurs'];
+                $maxJoueurs = ($ligne['typePartie'] == 0) ? 5 : 10;
+                $ratio = "$nbJoueurs/$maxJoueurs";
+
+                echo '<p class="card-text">Joueurs : ' . $ratio . '</p>';
+
                 // Affichez le formulaire de saisie du mot de passe si requis
                 if (!empty($ligne['motdepasse'])) {
                     echo '<form method="post" action="">
@@ -130,6 +138,7 @@ $resultat = $conn->query($query);
                               </div>
                               <input type="hidden" name="partie_id" value="' . $ligne['idPartie'] . '">
                               <button type="submit" name="rejoindre_partie" class="btn btn-primary">Rejoindre Partie</button>
+                              <p class="card-text">' . $error_message . '</p>
                           </form>';
                 } else {
                     // Aucun mot de passe requis, affichez directement le bouton de rejoindre
