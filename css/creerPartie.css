@@ -83,6 +83,7 @@ body {
     left: 50%;
     transform: translate(-50%);
 }
+
 .roleCarte {
     border-radius: 8px;
     overflow: hidden;
@@ -92,12 +93,15 @@ body {
     cursor: pointer;
     margin: 2rem;
 }
-
 .roleCarte img {
     width: 100%;
     height: 150px;
     object-fit: fill;
     border-bottom: 1px solid #000; /* Ajoute une bordure noire en bas */
+}
+
+.selected {
+    background-color: rgb(138, 255, 161);
 }
 
 .roleInfos {

@@ -2,20 +2,22 @@
 
 function carte(idcarte) {
     var carte = document.getElementById(idcarte);
-    if (carte.style.backgroundColor == 'rgb(138, 255, 161)')
-        deselectionCarte(carte);
-    else
-        selectionCarte(carte);
-}
+    var selectedValue = idcarte;
 
-function selectionCarte(carte) {
-    carte.style.backgroundColor = 'rgb(138, 255, 161)';
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "updateCarte.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            if (carte.classList.contains("selected")) {
+                carte.classList.remove("selected");
+            } else {
+                carte.classList.add("selected");
+            }
+        }
+    };
+    xhr.send("selected=" + selectedValue);
 }
-
-function deselectionCarte(carte) {
-    carte.style.backgroundColor = 'white';
-}
-
 
 
 /////////////////////////           CHANGEMENT DE MODE           /////////////////////////
