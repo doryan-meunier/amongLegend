@@ -110,55 +110,58 @@ $resultat = $conn->query($query);
     </div>
   </div>
 </nav>
-<div class="conteneur-global" id="partiesListe">
+<div class="conteneur-card" id="partiesListe">
         <?php
         // Affichez les parties ou un message s'il n'y en a pas
         if ($resultat->rowCount() > 0) {
-            while ($ligne = $resultat->fetch(PDO::FETCH_ASSOC)) {
-                // Affichez les détails de la partie
-                echo '<div class="barre_titre fl-wrap" ></div>
-                      <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; margin-right: 20%; margin-left: 20%; !important">
-                          <div class="card-header">' . htmlspecialchars($ligne['nomPartie']) . '</div>
-                          <div class="card-body">
-                              <h5 class="card-title">Créateur : ' . htmlspecialchars($ligne['createurNom']) . '</h5>';
-
-                // Calcul du ratio nbjoueur/maxjoueur
-                $nbJoueurs = $ligne['nbJoueurs'];
-                $maxJoueurs = ($ligne['typePartie'] == 0) ? 5 : 10;
-                $ratio = "$nbJoueurs/$maxJoueurs";
-
-                echo '<p class="card-text">Joueurs : ' . $ratio . '</p>';
-
-                // Affichez le formulaire de saisie du mot de passe si requis
-                if (!empty($ligne['motdepasse'])) {
-                    echo '<form method="post" action="">
-                              <div class="mb-3">
-                                  <label for="motdepasse" class="form-label">Mot de passe :</label>
-                                  <input type="password" name="motdepasse" class="form-control" required>
-                              </div>
-                              <input type="hidden" name="partie_id" value="' . $ligne['idPartie'] . '">
-                              <button type="submit" name="rejoindre_partie" class="btn btn-primary">Rejoindre Partie</button>
-                              <p class="card-text">' . $error_message . '</p>
-                          </form>';
-                } else {
-                    // Aucun mot de passe requis, affichez directement le bouton de rejoindre
-                    echo '<form method="post" action="">
-                              <input type="hidden" name="partie_id" value="' . $ligne['idPartie'] . '">
-                              <button type="submit" name="rejoindre_partie" class="btn btn-primary">Rejoindre Partie</button>
-                          </form>';
-                }
-
-                echo '</div></div><br>';
-            }
-        } else {
-            // Aucune partie trouvée, affichez un message
-            echo '<form method="post" action="" class="formulaire" style="padding: 50px !important">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label" style="color: black !important">Aucune partie n\'a encore été créée</label>
-                    </div><br>';
-            echo '<a href="initialisationPartie.php" class="btn btn-primary">Créer une partie</a></form>';
-        }
-        ?>
+          while ($ligne = $resultat->fetch(PDO::FETCH_ASSOC)) {
+              // Affichez les détails de la partie
+              echo '<div class="barre_titre fl-wrap" ></div>
+                    <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; margin-right: 20%; margin-left: 20%; !important">
+                        <div class="card-header">' . htmlspecialchars($ligne['nomPartie']) . '</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Créateur : ' . htmlspecialchars($ligne['createurNom']) . '</h5>';
+      
+              // Calcul du ratio nbjoueur/maxjoueur
+              $nbJoueurs = $ligne['nbJoueurs'];
+              $maxJoueurs = ($ligne['typePartie'] == 0) ? 5 : 10;
+              $ratio = "$nbJoueurs/$maxJoueurs";
+      
+              echo '<p class="card-text">Joueurs : ' . $ratio . '</p>';
+      
+              // Désactiver le bouton si le nombre de joueurs atteint le nombre maximum
+              $disableButton = ($nbJoueurs == $maxJoueurs) ? 'disabled' : '';
+      
+              // Affichez le formulaire de saisie du mot de passe si requis
+              if (!empty($ligne['motdepasse'])) {
+                  echo '<form method="post" action="">
+                            <div class="mb-3">
+                                <label for="motdepasse" class="form-label">Mot de passe :</label>
+                                <input type="password" name="motdepasse" class="form-control" required>
+                            </div>
+                            <input type="hidden" name="partie_id" value="' . $ligne['idPartie'] . '">
+                            <button type="submit" name="rejoindre_partie" class="btn btn-primary" ' . $disableButton . '>Rejoindre Partie</button>
+                            <p class="card-text">' . $error_message . '</p>
+                        </form>';
+              } else {
+                  // Aucun mot de passe requis, affichez directement le bouton de rejoindre
+                  echo '<form method="post" action="">
+                            <input type="hidden" name="partie_id" value="' . $ligne['idPartie'] . '">
+                            <button type="submit" name="rejoindre_partie" class="btn btn-primary" ' . $disableButton . '>Rejoindre Partie</button>
+                        </form>';
+              }
+      
+              echo '</div></div><br>';
+          }
+      } else {
+          // Aucune partie trouvée, affichez un message
+          echo '<form method="post" action="" class="formulaire" style="padding: 50px !important">
+                  <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label" style="color: black !important">Aucune partie n\'a encore été créée</label>
+                  </div><br>';
+          echo '<a href="initialisationPartie.php" class="btn btn-primary">Créer une partie</a></form>';
+      }
+      ?>
         </div>
         </div>
     </section>

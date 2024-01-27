@@ -9,6 +9,7 @@ body {
 h3 {
     text-align: center;
     margin-top: 50px; /* Ajustez selon vos besoins pour positionner le titre verticalement */
+    color:aliceblue;
 }
 
 .conteneur-encadrement {
@@ -33,9 +34,14 @@ h3 {
 .conteneur-global {
     margin: 0 auto; /* Centrer le contenu */
     max-width: 800px; /* Ajustez selon la largeur souhaitée */
-    border: 1px solid #ccc; /* Ajoutez la bordure avec une couleur de votre choix */
     padding: 20px; /* Ajoutez un espace intérieur pour la lisibilité */
-    border-radius: 10px; /* Ajoutez un rayon aux coins de la bordure */
+}
+.conteneur-card {
+    background-color: rgba(65, 63, 63, 0.438);
+    margin: 0 auto; /* Centrer le contenu */
+    max-width: 800px; /* Ajustez selon la largeur souhaitée */
+    padding: 20px; /* Ajoutez un espace intérieur pour la lisibilité */
+
 }
 .card {
     width: 400px; /* Ajustez la largeur selon vos préférences */
