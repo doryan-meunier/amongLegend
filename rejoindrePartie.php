@@ -50,10 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rejoindre_partie'])) 
 
 // Fonction pour mettre à jour la base de données avec l'ID de la partie
 function updateIdPartie($partie_id) {
+    $_SESSION['idPartie'] = $partie_id;
     global $conn;
     $update_query = $conn->prepare("UPDATE joueurs SET idPartie = :partie_id WHERE idJoueur = :joueur_id");
     $update_query->bindParam(':partie_id', $partie_id, PDO::PARAM_INT);
-    $update_query->bindParam(':joueur_id', $_SESSION['id'], PDO::PARAM_INT);
+    $update_query->bindParam(':joueur_id', $_SESSION['idJoueur'], PDO::PARAM_INT);
     $update_query->execute();
 }
 

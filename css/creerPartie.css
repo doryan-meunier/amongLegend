@@ -10,7 +10,6 @@ body {
 }
 
 
-
 /**************************************************** BOUTON TYPE PARTIE ****************************************************/
 .gameTypeContainer {
     width: fit-content;
@@ -30,7 +29,6 @@ body {
     background: #343434;
     font-weight: bold;
     color: #343434;
-    cursor: pointer;
 }
 .toggleContainer::before {
     content: '';
@@ -90,7 +88,6 @@ body {
     width: 300px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
     margin: 2rem;
 }
 .roleCarte img {
