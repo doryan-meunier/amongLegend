@@ -1,9 +1,4 @@
-<?php
-    session_start();
-    if (!isset($_SESSION['idPartie'])) {
-        header("Location: index.php");
-    }
-?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,24 +12,21 @@
 <div class="gameTypeContainer">
     <input type="checkbox" id="toggle" class="toggleCheckbox" />
     <label for="toggle" class='toggleContainer' onclick="toggleFond()">
-      <div>Normal Game</div>   
+      <div>Normal Game</div>
       <div>Partie Perso</div>
     </label>
 </div>
 
 <div class="carteContainer">
-<?php
-    
-?>
-    <div class="roleCarte" id="Imposteur" onclick="carte(this.id)">
+    <div class="roleCarte" id="imposteur" onclick="carte(this.id)">
         <img src="images/creerPartie/roles/impostor.jpg" alt="Imposteur">
         <div class="roleInfos">
-            <h2>Imposteur</h2>
+            <h2>Imposteur</h2> 
             <p>Faire perdre la game sans se faire démasquer</p>
         </div>
     </div>
     
-    <div class="roleCarte" id="Droide" onclick="carte(this.id)">
+    <div class="roleCarte" id="droide" onclick="carte(this.id)">
         <img src="images/creerPartie/roles/droide.jpg" alt="Droide">
         <div class="roleInfos">
             <h2>Droïde</h2>
@@ -42,7 +34,7 @@
         </div>
     </div>
     
-    <div class="roleCarte" id="Serpentin" onclick="carte(this.id)">
+    <div class="roleCarte" id="serpentin" onclick="carte(this.id)">
         <img src="images/creerPartie/roles/serpentin.jpg" alt="Serpentin">
         <div class="roleInfos">
             <h2>Serpentin</h2>
@@ -50,7 +42,7 @@
         </div>
     </div>
     
-    <div class="roleCarte" id="Double-face" onclick="carte(this.id)">
+    <div class="roleCarte" id="doubleFace" onclick="carte(this.id)">
         <img src="images/creerPartie/roles/doubleFace.jpg" alt="Double-face">
         <div class="roleInfos">
             <h2>Double-face</h2>
@@ -58,7 +50,7 @@
         </div>
     </div>
     
-    <div class="roleCarte" id="Super-héros" onclick="carte(this.id)">
+    <div class="roleCarte" id="superHeros" onclick="carte(this.id)">
         <img src="images/creerPartie/roles/superHero.png" alt="Super-héros">
         <div class="roleInfos">
             <h2>Super-héros</h2>
