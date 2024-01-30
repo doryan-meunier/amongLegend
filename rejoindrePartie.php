@@ -96,10 +96,9 @@ $resultat = $conn->query($query);
             trier par
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="triPartiesDropdown">
-          <li><a class="dropdown-item" href="#" data-tri="alphabetique">Alphabétique</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#" data-tri="alphabetique">Alphabétique</a></li>
+            <li><a class="dropdown-item" href="#" data-tri="alphabetique-inverse">Alphabétique inverse</a></li>
+            <li><a class="dropdown-item" href="#" data-tri="joueurs">non plein</a></li>
           </ul>
         </li>
       </ul>
@@ -127,7 +126,7 @@ $resultat = $conn->query($query);
               $maxJoueurs = ($ligne['typePartie'] == 0) ? 5 : 10;
               $ratio = "$nbJoueurs/$maxJoueurs";
       
-              echo '<p class="card-text">Joueurs : ' . $ratio . '</p>';
+              echo '<p class="card-text nbJoueurs">Joueurs : ' . $ratio . '</p>';
       
               // Désactiver le bouton si le nombre de joueurs atteint le nombre maximum
               $disableButton = ($nbJoueurs == $maxJoueurs) ? 'disabled' : '';
